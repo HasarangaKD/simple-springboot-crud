@@ -24,14 +24,17 @@ public class UserService {
         return userDTO;
 
     }
+    //GET Method
     public List<UserDTO>getAllUsers(){
         List<User>userList=userRepo.findAll();
         return modelMapper.map(userList,new TypeToken<List<UserDTO>>(){}.getType());
     }
+    //PUT Method
     public UserDTO updateUser(UserDTO userDTO){
         userRepo.save(modelMapper.map(userDTO, User.class));
         return userDTO;
     }
+    //DELETE Method
     public boolean deleteUser(UserDTO userDTO){
         userRepo.delete(modelMapper.map(userDTO,User.class));
         return true;
